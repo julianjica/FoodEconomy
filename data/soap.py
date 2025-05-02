@@ -11,5 +11,5 @@ settings = Settings(strict=False, xml_huge_tree=True)
 client = Client(wsdl='https://appweb.dane.gov.co/sipsaWS/SrvSipsaUpraBeanService?WSDL',
                 transport=transport, settings=settings)
 
-response = client.service.promediosSipsaSemanaMadr()
+response = client.service.promediosSipsaCiudad()
 response = pd.DataFrame(helpers.serialize_object(response))
