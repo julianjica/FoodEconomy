@@ -18,12 +18,12 @@ This project aims to **web scrape historical prices** of essential household pro
 ## ✅ Project Tasks
 
 ### 1. **Project Setup**
-- [ ] Set up GitHub repo and folder structure  
+- [X] Set up GitHub repo and folder structure  
 - [ ] Choose stack (suggested: Python, Flask/FastAPI, React or Streamlit, PostgreSQL/SQLite)  
 - [ ] Create virtual environment and requirements.txt  
 
 ### 2. **Data Collection**
-- [ ] Identify sources for product price data (e.g., supermarkets, price-tracking websites, government inflation databases)  
+- [X] Identify sources for product price data (e.g., supermarkets, price-tracking websites, government inflation databases)  
 - [ ] Implement web scrapers (using `BeautifulSoup`, `Scrapy`, or `Selenium`)  
 - [ ] Store raw data (e.g., date, product name, category, price, source)  
 - [ ] Schedule scraping jobs (e.g., with `cron` or `APScheduler`)  
