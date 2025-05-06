@@ -1,0 +1,359 @@
+,artiId,artiNombre
+0,351,Bocadillo veleño
+1,245,Huevo rojo B
+2,246,Huevo rojo A
+3,247,Huevo rojo AA
+4,248,Huevo rojo extra
+5,15,Repollo morado
+6,64,Calabaza
+7,17,Repollo verde
+8,1,Acelga
+9,70,Rábano rojo
+10,74,Ahuyamín (Sakata)
+11,57,Ahuyama
+12,2,Apio
+13,185,Plátano guineo
+14,146,Piña perolera
+15,63,Calabacín
+16,140,Patilla
+17,66,Cidra
+18,370,Sal yodada
+19,179,Papa única
+20,172,Papa rubí
+21,86,Naranja Valencia
+22,5893,Naranja Sweet
+23,112,Guayaba pera
+24,43,Habichuela
+25,42,Haba verde
+26,76,Limón común
+27,65,Chócolo mazorca
+28,170,Papa R-12 roja
+29,93,Banano criollo
+30,94,Banano Urabá
+31,162,Papa superior
+32,113,Gulupa
+33,169,Papa R-12 negra
+34,167,Papa parda pastusa
+35,226,Maíz amarillo cáscara
+36,54,Zanahoria
+37,8,Lechuga Batavia
+38,100,Curuba
+39,45,Tomate chonto
+40,194,Yuca llanera
+41,10,Lechuga crespa verde
+42,92,Banano bocadillo
+43,24,Cebolla cabezona roja
+44,134,Melón Cantalup
+45,18,Cebolla cabezona blanca
+46,71,Remolacha
+47,5,Coles
+48,183,Patilla baby
+49,6100,Papaya Paulina
+50,144,Piña gold
+51,231,Maíz blanco trillado
+52,68,Pepino de rellenar
+53,6,Coliflor
+54,149,Uchuva con cáscara
+55,34,Cebolla puerro
+56,98,Ciruela roja
+57,148,Tomate de árbol
+58,344,Panela cuadrada morena
+59,195,Arracacha amarilla
+60,7,Espinaca
+61,188,Plátano hartón verde ecuatoriano
+62,67,Pepino cohombro
+63,6002,Papaya tainung
+64,48,Tomate larga vida
+65,202,Arroz de segunda
+66,201,Arroz de primera
+67,362,Harina de trigo
+68,117,Mango común
+69,173,Papa sabanera
+70,125,Manzana nacional
+71,81,Limón Tahití
+72,99,Coco
+73,161,Papa criolla sucia
+74,133,Maracuyá
+75,207,Arveja verde seca importada
+76,348,Azúcar sulfitada
+77,151,Uva Isabela
+78,363,Harina precocida de maíz
+79,107,Guanábana
+80,30,Cebolla junca Aquitania
+81,116,Lulo
+82,186,Plátano hartón maduro
+83,187,Plátano hartón verde
+84,233,Maíz pira
+85,95,Borojó
+86,62,Berenjena
+87,159,Papa criolla limpia
+88,135,Mora de Castilla
+89,4,Cilantro
+90,189,Plátano hartón verde llanero
+91,40,Fríjol verde cargamanto
+92,89,Aguacate Hass
+93,87,Tangelo
+94,124,Mango Tommy
+95,82,Mandarina Arrayana
+96,3,Brócoli
+97,38,Arveja verde en vaina pastusa
+98,142,Pera nacional
+99,69,Pimentón
+100,61,Ajo importado
+101,36,Arveja verde en vaina
+102,224,Lenteja importada
+103,90,Aguacate papelillo
+104,103,Durazno nacional
+105,105,Fresa
+106,369,Pastas alimenticias
+107,141,Pera importada
+108,341,Manteca
+109,350,Avena molida
+110,349,Avena en hojuelas
+111,222,Garbanzo importado
+112,106,Granadilla
+113,11,Perejil
+114,126,Manzana roja importada
+115,127,Manzana royal gala importada
+116,287,Muslos de pollo sin rabadilla
+117,284,Alas de pollo sin costillar
+118,128,Manzana verde importada
+119,153,Uva red globe nacional
+120,295,Pollo entero fresco sin vísceras
+121,291,Piernas de pollo
+122,339,Aceite soya
+123,102,Durazno importado
+124,115,Kiwi
+125,155,Uva verde
+126,288,Pechuga de pollo
+127,215,Fríjol cargamanto rojo
+128,6044,"Basa, entero congelado importado"
+129,342,Margarina
+130,97,Ciruela importada
+131,360,Galletas saladas
+132,323,Palmitos de mar
+133,210,Fríjol bolón
+134,239,Queso cuajada
+135,355,Chocolate dulce
+136,237,Queso campesino
+137,150,Uva importada
+138,464,"Basa, filete congelado importado"
+139,309,Calamar blanco entero
+140,314,Cazuela de mariscos (paquete)
+141,60,Ajo
+142,240,Queso doble crema
+143,337,Sardinas en lata
+144,334,Trucha en corte mariposa
+145,297,"Tilapia, filete congelado"
+146,238,Queso costeño
+147,104,Feijoa
+161,154,Uva roja
+164,147,Pitahaya
+174,242,Huevo blanco A
+175,243,Huevo blanco AA
+176,244,Huevo blanco extra
+186,55,Zanahoria bogotana
+191,157,Papa capira
+195,193,Yuca ICA
+198,182,Plátano dominico hartón verde
+199,181,Plátano dominico hartón maduro
+200,111,Guayaba manzana
+204,137,Papaya Maradol
+206,84,Mandarina Oneco
+208,196,Arracacha blanca
+213,29,Cebolla junca
+216,345,Panela redonda morena
+218,108,Guayaba agria
+220,296,Rabadillas de pollo
+225,283,Alas de pollo con costillar
+226,307,Cachama de cultivo fresca
+228,289,Pierna pernil con rabadilla
+229,340,Aceite vegetal mezcla
+234,332,Tilapia roja entera fresca
+241,217,Fríjol nima calima
+244,281,"Carne de cerdo, tocino barriga"
+251,264,"Carne de res, murillo"
+252,268,"Carne de res, sobrebarriga"
+253,277,"Carne de cerdo, lomo sin hueso"
+254,305,Bocachico criollo fresco
+255,357,Color (bolsita)
+256,301,Bagre rayado entero fresco
+257,253,"Carne de res, bola de pierna"
+258,358,Fécula de maíz
+259,361,Gelatina
+260,336,Lomitos de atún en lata
+261,353,Café molido
+262,352,Café instantáneo
+273,12,Repollo blanco
+285,80,Limón mandarino
+295,285,Menudencias de pollo
+312,13,Repollo blanco bogotano
+342,228,Maíz amarillo trillado
+356,326,Pescado cabezas
+373,165,Papa nevada
+375,41,Fríjol verde en vaina
+377,50,Tomate riñón valluno
+381,373,Vinagre
+391,347,Azúcar refinada
+392,346,Azúcar morena
+419,322,Nicuro fresco
+424,371,Salsa de tomate doy pack
+425,366,Mayonesa doy pack
+427,256,"Carne de res, cogote"
+428,269,Carne de cerdo en canal
+429,282,"Carne de cerdo, tocino papada"
+431,257,Carne de res en canal
+433,359,Galletas dulces redondas con crema
+435,251,"Carne de res, costilla"
+437,261,"Carne de res molida, murillo"
+438,271,"Carne de cerdo, brazo sin hueso"
+440,272,"Carne de cerdo, cabeza de lomo"
+441,274,"Carne de cerdo, costilla"
+442,278,"Carne de cerdo, pernil con hueso"
+444,279,"Carne de cerdo, pernil sin hueso"
+445,262,"Carne de res, morrillo"
+447,258,"Carne de res, falda"
+448,265,"Carne de res, paletero"
+449,266,"Carne de res, pecho"
+452,252,"Carne de res, bola de brazo"
+453,255,"Carne de res, centro de pierna"
+454,249,"Carne de res, cadera"
+455,263,"Carne de res, muchacho"
+456,254,"Carne de res, bota"
+458,365,Jugo instantáneo (sobre)
+459,354,Chocolate amargo
+460,267,"Carne de res, punta de anca"
+462,250,"Carne de res, chatas"
+464,236,Leche en polvo
+465,260,"Carne de res, lomo fino"
+487,28,Cebolla cabezona roja importada
+497,73,Remolacha bogotana
+498,19,Cebolla cabezona blanca bogotana
+503,21,Cebolla cabezona blanca importada
+508,33,Cebolla junca Tenerife
+511,200,Ulluco
+540,145,Piña manzana
+548,175,Papa suprema
+554,209,Cuchuco de maíz
+593,298,Almejas con concha
+605,275,"Carne de cerdo, espinazo"
+610,293,Pollo entero congelado sin vísceras
+612,213,Fríjol calima
+614,306,Bocachico importado congelado
+617,331,Tilapia roja entera congelada
+626,318,"Merluza, filete importado"
+633,329,Sierra entera congelada
+634,522,Queso Caquetá
+644,300,Bagre rayado entero congelado
+651,520,Pargo rojo entero congelado
+654,311,Camarón tigre precocido seco
+655,308,Calamar anillos
+659,328,"Salmón, filete congelado"
+660,316,Langostino 16-20
+751,299,Almejas sin concha
+762,315,"Corvina, filete congelado nacional"
+764,317,Langostino U12
+778,191,Yuca chirosa
+786,46,Tomate chonto regional
+791,79,Limón común valluno
+802,88,Aguacate común
+846,325,Pargo rojo platero
+878,230,Maíz blanco retrillado
+913,49,Tomate riñón
+930,220,Fríjol Uribe rosado
+978,32,Cebolla junca pastusa
+1174,327,"Róbalo, filete congelado"
+1193,56,Zanahoria larga vida
+1205,559,Maíz amarillo cáscara importado
+1208,192,Yuca criolla
+1213,180,Plátano comino
+1216,229,Maíz blanco cáscara
+1218,184,Plátano dominico verde
+1237,6021,Guayaba pera valluna
+1240,303,Panela redonda blanca
+1243,129,Maracuyá antioqueño
+1247,486,Plátano hartón verde Eje Cafetero
+1252,58,Ají topito dulce
+1260,114,Higo
+1269,343,Panela cuadrada blanca
+1283,96,Breva
+1285,521,Pimentón verde
+1296,219,Fríjol radical
+1301,206,Arveja enlatada
+1302,6101,Aceite de palma
+1308,330,"Tilapia, lomitos"
+1316,214,Fríjol cargamanto blanco
+1325,216,Fríjol enlatado
+1329,338,Aceite girasol
+1333,232,Maíz enlatado
+1359,356,Chocolate instantáneo
+1372,302,Bagre rayado en postas congelado
+1533,168,Papa Puracé
+1545,75,Remolacha regional
+1617,85,Naranja común
+1621,83,Mandarina común
+1677,27,Cebolla cabezona roja peruana
+1678,52,Tomate Riogrande bumangués
+1691,31,Cebolla junca Berlín
+1692,203,Arroz excelso
+1698,212,Fríjol cabeza negra nacional
+1702,218,Fríjol palomito importado
+1709,221,Fríjol Zaragoza
+1714,364,Jugo de frutas
+1715,367,Mostaza doy pack
+1754,109,Guayaba Atlántico
+1768,110,Guayaba común
+1786,132,Maracuyá valluno
+1789,44,Habichuela larga
+1791,211,Fríjol cabeza negra importado
+1798,119,Mango de azúcar
+1799,77,Limón común Ciénaga
+1805,35,Cebollín chino
+1813,320,Mojarra lora entera fresca
+1820,321,Mojarra lora entera congelada
+1830,270,"Carne de cerdo, brazo con hueso"
+1834,276,"Carne de cerdo, lomo con hueso"
+1904,259,"Carne de res, lomo de brazo"
+1926,6013,Panela en pastilla
+1939,558,Arroz blanco empacado
+1940,557,Harina de arroz
+1941,553,Arroz paddy verde
+1942,556,Arroz granza
+1943,561,Arroz blanco en bulto
+1951,555,Arroz cristal
+2135,164,Papa Morasurco
+2136,5200,Papa Betina
+2140,171,Papa roja peruana
+2159,51,Tomate Riogrande
+2282,131,Maracuyá santandereano
+2321,312,Camarón tití precocido seco
+2332,163,Papa ICA-Huila
+2451,130,Maracuyá huilense
+2507,22,Cebolla cabezona blanca pastusa
+2534,319,"Merluza, filete nacional"
+2640,280,"Carne de cerdo, tocineta plancha"
+2776,241,Huevo blanco B
+2885,290,Pierna pernil sin rabadilla
+3016,560,Arroz blanco importado
+3039,335,Trucha entera fresca
+3087,26,Cebolla cabezona roja ocañera
+3107,204,Arroz sopa cristal
+3185,333,"Toyo blanco, filete congelado"
+3232,198,Ñame diamante
+3319,208,Cuchuco de cebada
+3332,205,Arveja amarilla seca importada
+3419,199,Ñame espino
+3470,197,Ñame criollo
+3539,304,Blanquillo entero fresco
+3590,39,Fríjol verde bolo
+3760,121,Mango manzano
+3771,475,Mango Yulima
+4093,156,Zapote
+4197,123,Mango reina
+5560,286,Muslos de pollo con rabadilla
+5564,372,Sopa de pollo (caja)
+5648,91,Badea
+13612,178,Papa tocarreña
+74489,34,Cebolla Puerro
+83658,6221,Aguacate Choquette
+95463,313,Capaz Magdalena fresco
