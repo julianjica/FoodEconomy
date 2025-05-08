@@ -1,0 +1,45 @@
+# --- Web Scraping ---
+beautifulsoup4
+scrapy
+selenium
+
+# --- Web Framework ---
+fastapi
+uvicorn[standard]
+pydantic
+
+# --- Data Storage ---
+sqlalchemy
+asyncpg
+alembic
+python-dotenv
+
+# --- Data Analysis ---
+pandas
+numpy
+scipy
+matplotlib
+statsmodels
+scikit-learn
+
+# --- Scheduling ---
+APScheduler
+
+# --- Frontend (if using Streamlit) ---
+streamlit
+plotly
+
+# --- Testing ---
+pytest
+pytest-asyncio
+pytest-cov
+mock
+
+# --- Deployment ---
+gunicorn
+boto3
+
+# --- SOAP & HTTP Requests ---
+zeep
+requests
+
