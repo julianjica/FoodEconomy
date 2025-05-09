@@ -11,6 +11,8 @@ scipy
 matplotlib
 statsmodels
 scikit-learn
+pmdarima 
+statsmodels
 
 # --- SOAP & HTTP Requests ---
 zeep

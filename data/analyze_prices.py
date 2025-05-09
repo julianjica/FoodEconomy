@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from statsmodels.tsa.arima.model import ARIMA
+import warnings
+
+
+warnings.filterwarnings("ignore")
 # Load data
 data = pd.read_csv("dummy.csv", parse_dates=["fechaCaptura"], dayfirst=True)
 
@@ -24,6 +28,14 @@ yoy_inflation.to_csv("outputs/inflation_by_product_city.csv")
 
 # --- Sort for rolling metrics ---
 data = data.sort_values(['producto', 'ciudad', 'fechaCaptura'])
+
+# --- Compute Inflation per product-city pair (DoD %) ---
+# Group by product and city, then calculate day-to-day inflation (% change)
+data['daily_inflation'] = data.groupby(['producto', 'ciudad'])['precioPromedio'].pct_change() * 100
+
+# Optional: Save to CSV
+data[['producto', 'ciudad', 'fechaCaptura', 'precioPromedio', 'daily_inflation']].to_csv("outputs/daily_inflation.csv", index=False)
+
 
 # --- Moving Averages and Volatility (per product-city pair) ---
 short_window = 10
@@ -66,39 +78,47 @@ data['rsi_signal'] = np.where(data['RSI'] > 70, 'Overbought',
                        np.where(data['RSI'] < 30, 'Oversold', 'Neutral'))
 
 
-# --- Anomaly Detection using Z-Score ---
-# Add window=50
+# --- Anomaly Detection using Rolling Z-Score ---
+window_size = 50
+
 data['z_score'] = data.groupby(['producto', 'ciudad'])['precioPromedio'].transform(
-    lambda x: (x - x.mean()) / x.std(ddof=0)
-)
-data['anomaly'] = data['z_score'].abs() > 2  # True if price deviates > 2 std dev
-
-# --- Trendline Support (Simple Linear Regression Slope) ---
-# Add window(p)=50, d, q  ARIMA, 
-
-def compute_trend_slope(group):
-    group = group.sort_values('fechaCaptura')
-    X = np.arange(len(group)).reshape(-1, 1)
-    y = group['precioPromedio'].values
-    if len(y) >= 2:
-        model = LinearRegression().fit(X, y)
-        return model.coef_[0]
-    else:
-        return np.nan
-
-trend_slopes = (
-    data.groupby(['producto', 'ciudad'], group_keys=False)
-        .apply(compute_trend_slope, include_groups=False)
-        .reset_index(name='trend_slope')
+    lambda x: (x - x.rolling(window=window_size, min_periods=10).mean()) /
+              x.rolling(window=window_size, min_periods=10).std(ddof=0)
 )
 
-data = data.merge(trend_slopes, on=['producto', 'ciudad'], how='left')
+# Mark as anomaly if z-score > 2 (or < -2)
+data['anomaly'] = data['z_score'].abs() > 2
 
-# Interpret trend slope
-data['trend'] = np.where(data['trend_slope'] > 0, 'Uptrend',
-                  np.where(data['trend_slope'] < 0, 'Downtrend', 'Flat'))
 
-# --- Save results ---
+# --- Trend Analysis using ARIMA(p=50, d=1, q=0) ---
+
+def compute_arima_trend(series, window=50):
+    trends = []
+    for i in range(len(series)):
+        if i < window:
+            trends.append(np.nan)
+            continue
+        window_series = series.iloc[i - window:i]
+        try:
+            model = ARIMA(window_series, order=(50, 1, 0)).fit()
+            forecast = model.forecast(steps=2)
+            slope = forecast.iloc[1] - forecast.iloc[0]  # change between t+1 and t
+        except:
+            slope = np.nan
+        trends.append(slope)
+    return pd.Series(trends, index=series.index)
+
+# Apply per product-city group
+data['arima_trend'] = (
+    data.groupby(['producto', 'ciudad'])['precioPromedio']
+        .transform(lambda x: compute_arima_trend(x, window=50))
+)
+
+# Interpret trend
+data['trend'] = np.where(data['arima_trend'] > 0, 'Uptrend',
+                  np.where(data['arima_trend'] < 0, 'Downtrend', 'Flat'))
+
+# --- Save ARIMA-based trend data ---
 data.to_csv("outputs/trend_anomaly_analysis.csv", index=False)
 
 # --- User-centric metrics: Price Drop Detection ---
