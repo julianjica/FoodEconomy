@@ -45,10 +45,11 @@ This project aims to **web scrape historical prices** of essential household pro
 - [ ] Recommend best time to buy / best alternative products  
 
 ### 6. **Dashboard UI**
-- [ ] Design front-end interface (charts, filters, input forms)  
-- [ ] Create price trend graphs (e.g., using Chart.js, Recharts, or Plotly)  
-- [ ] Display recommendations with rationale (e.g., “Buy rice now: lowest price in 6 months”)  
-- [ ] Add export/share feature for shopping lists  
+- [X] Design front-end interface (charts, filters, input forms)  
+- [X] Create price trend graphs (e.g., using Chart.js, Recharts, or Plotly)  
+- [X] Display recommendations with rationale (e.g., “Buy rice now: lowest price in 6 months”)  
+- [ ] Add export/share feature for shopping lists
+- [ ] Connect the above with the backend
 
 ### 7. **Testing**
 - [ ] Unit test scrapers and data pipeline  
