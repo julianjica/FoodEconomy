@@ -14,7 +14,7 @@ def run():
     df = compute_trends(df)
     df = detect_price_drops(df)
     df = detect_seasonal_patterns(df)
-    df.to_csv("data/processed/full_analysis.csv", index=False)
+    df.to_csv("data/outputs/full_analysis.csv", index=False)
 
 if __name__ == "__main__":
     run()

@@ -14,4 +14,7 @@ def detect_seasonal_patterns(data):
         .mean()
         .reset_index()
     )
-    return monthly_avg
+        # Merge the monthly average back to the main data
+    data = data.merge(monthly_avg, on=['producto', 'ciudad', 'mes'], how='left')
+
+    return data
