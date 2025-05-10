@@ -209,23 +209,4 @@ monthly_avg = (
 )
 monthly_avg.to_csv("outputs/seasonal_price_patterns.csv", index=False)
 
-# Diagramas correlacion meses
 
-print("✅ Analysis completed. Results saved to /outputs/")
-print(data.head(20))
-
-print(data.iloc[0:5, [1, 3,6,7,8,9,10,11,12]])  # first 5 rows, and 2nd & 4th columns
-
-
-# heatmap_data = monthly_avg.pivot(index='producto', columns='month', values='precioPromedio')
-# 
-# import seaborn as sns
-# import matplotlib.pyplot as plt
-# 
-# plt.figure(figsize=(12, 8))
-# sns.heatmap(heatmap_data, cmap='YlGnBu', annot=True, fmt=".2f")
-# plt.title('Average Monthly Prices per Product')
-# plt.xlabel('Month')
-# plt.ylabel('Product')
-# plt.tight_layout()
-# plt.show()
