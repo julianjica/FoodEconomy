@@ -6,12 +6,12 @@ selenium
 
 # --- Data Analysis ---
 pandas
-numpy
+numpy=1.26.4
 scipy
 matplotlib
 statsmodels
 scikit-learn
-pmdarima 
+pmdarima=2.0.4 
 statsmodels
 
 # --- SOAP & HTTP Requests ---

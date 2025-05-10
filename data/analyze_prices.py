@@ -3,7 +3,6 @@ import numpy as np
 from statsmodels.tsa.arima.model import ARIMA
 import warnings
 
-
 warnings.filterwarnings("ignore")
 # Load data
 data = pd.read_csv("dummy.csv", parse_dates=["fechaCaptura"], dayfirst=True)
@@ -22,7 +21,6 @@ avg_price_by_year = (
     .mean()
     .unstack(fill_value=0)
 )
-print(avg_price_by_year.head(20))
 yoy_inflation = avg_price_by_year.pct_change(axis=1) * 100
 yoy_inflation.to_csv("outputs/inflation_by_product_city.csv")
 
@@ -33,7 +31,7 @@ data = data.sort_values(['producto', 'ciudad', 'fechaCaptura'])
 # Group by product and city, then calculate day-to-day inflation (% change)
 data['daily_inflation'] = data.groupby(['producto', 'ciudad'])['precioPromedio'].pct_change() * 100
 
-# Optional: Save to CSV
+# Save to CSV
 data[['producto', 'ciudad', 'fechaCaptura', 'precioPromedio', 'daily_inflation']].to_csv("outputs/daily_inflation.csv", index=False)
 
 
@@ -90,35 +88,79 @@ data['z_score'] = data.groupby(['producto', 'ciudad'])['precioPromedio'].transfo
 data['anomaly'] = data['z_score'].abs() > 2
 
 
-# --- Trend Analysis using ARIMA(p=50, d=1, q=0) ---
+# --- Trend Analysis using ARIMA(p=50, d, q) ---
 
-def compute_arima_trend(series, window=50):
-    trends = []
-    for i in range(len(series)):
-        if i < window:
-            trends.append(np.nan)
-            continue
-        window_series = series.iloc[i - window:i]
-        try:
-            model = ARIMA(window_series, order=(50, 1, 0)).fit()
-            forecast = model.forecast(steps=2)
-            slope = forecast.iloc[1] - forecast.iloc[0]  # change between t+1 and t
-        except:
-            slope = np.nan
-        trends.append(slope)
-    return pd.Series(trends, index=series.index)
+# Fitting p,q,d parameters
+#def compute_arima_trend(series):
+#    try:
+#        # Fit ARIMA model with automated parameter selection
+#        model = auto_arima(series, seasonal=False, stepwise=True, suppress_warnings=True, error_action='ignore')
+#        # Forecast the next value
+#        forecast = model.predict(n_periods=1)[0]
+#        # Calculate the trend as the difference between forecast and last actual value
+#        trend = forecast - series.iloc[-1]
+#        return trend
+#    except:
+#        return np.nan
 
-# Apply per product-city group
-data['arima_trend'] = (
-    data.groupby(['producto', 'ciudad'])['precioPromedio']
-        .transform(lambda x: compute_arima_trend(x, window=50))
+#Fix p, reduce search space for q,d
+
+
+
+def compute_fast_trend_with_params(series, p, d, q):
+    try:
+        if len(series) < max(p, d, q) + 1:
+            return np.nan  # Not enough data points to fit the model
+
+        model = ARIMA(series, order=(p, d, q))
+        model_fit = model.fit()
+        forecast = model_fit.forecast(steps=1)[0]
+        return forecast - series.iloc[-1]
+
+    except Exception as e:
+        print(f"Error in ARIMA fitting: {e}")
+        return np.nan
+
+# Function to retrieve the latest series data
+def get_latest_series(producto, ciudad, full_data):
+    subset = full_data[(full_data['producto'] == producto) & (full_data['ciudad'] == ciudad)]
+    return subset['precioPromedio']
+
+# Use parameters for fast forecast
+def app_compute_trend(producto, ciudad, full_data, param_df):
+    series = get_latest_series(producto, ciudad, full_data)
+    
+    match = param_df[(param_df['producto'] == producto) & (param_df['ciudad'] == ciudad)]
+    
+    if match.empty:
+        return np.nan  # No parameters available for this combination
+    
+    # Extract parameters
+    try:
+        p = int(match['p'].values[0])
+        d = int(match['d'].values[0])
+        q = int(match['q'].values[0])
+    except Exception as e:
+        print(f"Error extracting parameters: {e}")
+        return np.nan
+    
+    # Compute trend using parameters
+    return compute_fast_trend_with_params(series, p, d, q)
+
+# Load stored parameters
+param_df = pd.read_csv('arima_trend_params.csv')
+
+# Apply the trend computation
+trend_results = (
+    data.groupby(['producto', 'ciudad'])
+    .apply(lambda group: app_compute_trend(group['producto'].iloc[0], group['ciudad'].iloc[0], data, param_df))
+    .reset_index(name='trend_slope')
 )
 
-# Interpret trend
-data['trend'] = np.where(data['arima_trend'] > 0, 'Uptrend',
-                  np.where(data['arima_trend'] < 0, 'Downtrend', 'Flat'))
+# Merge trend results back to the main DataFrame
+data = data.merge(trend_results, on=['producto', 'ciudad'], how='left')
 
-# --- Save ARIMA-based trend data ---
+# Save the updated dataset with trend analysis
 data.to_csv("outputs/trend_anomaly_analysis.csv", index=False)
 
 # --- User-centric metrics: Price Drop Detection ---
@@ -143,7 +185,15 @@ print(data.head(20))
 print(data.iloc[0:5, [1, 3,6,7,8,9,10,11,12]])  # first 5 rows, and 2nd & 4th columns
 
 
-
-
-
-
+# heatmap_data = monthly_avg.pivot(index='producto', columns='month', values='precioPromedio')
+# 
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+# 
+# plt.figure(figsize=(12, 8))
+# sns.heatmap(heatmap_data, cmap='YlGnBu', annot=True, fmt=".2f")
+# plt.title('Average Monthly Prices per Product')
+# plt.xlabel('Month')
+# plt.ylabel('Product')
+# plt.tight_layout()
+# plt.show()
