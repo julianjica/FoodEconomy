@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo y nombre */}
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center space-x-2">
+            <Link to="/dashboard" className="flex-shrink-0 flex items-center space-x-2">
               <div className={`rounded-md p-1 ${scrolled ? 'bg-blue-100' : 'bg-white/10'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8 ${scrolled ? 'text-blue-700' : 'text-blue-100'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -55,9 +55,9 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:space-x-4">
             <div className="flex space-x-1">
               <Link 
-                to="/" 
+                to="/dashboard" 
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive('/') 
+                  isActive('/dashboard') 
                     ? scrolled 
                       ? 'bg-blue-100 text-blue-800' 
                       : 'bg-white/10 text-white' 
@@ -155,9 +155,9 @@ const Navbar = () => {
       <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden ${scrolled ? 'bg-white' : 'bg-blue-900/95'} shadow-lg`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link 
-            to="/" 
+            to="/dashboard" 
             className={`block px-3 py-2 rounded-md text-base font-medium ${
-              isActive('/') 
+              isActive('/dashboard') 
                 ? scrolled 
                   ? 'bg-blue-100 text-blue-800' 
                   : 'bg-white/10 text-white' 
