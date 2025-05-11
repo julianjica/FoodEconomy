@@ -1,50 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { fetchPriceData, fetchProducts, fetchCities } from '../utils/api';
-
-// Datos ficticios para análisis histórico
-const historicalData = [
-  { year: '2020', price: 2100 },
-  { year: '2021', price: 2330 },
-  { year: '2022', price: 2450 },
-  { year: '2023', price: 2780 },
-  { year: '2024', price: 2920 },
-  { year: '2025', price: 3050 },
-];
-
-// Datos ficticios para precios por ciudad
-const cityPriceData = [
-  { city: 'BOGOTÁ, D.C.', price: 3050 },
-  { city: 'MEDELLÍN', price: 2950 },
-  { city: 'CALI', price: 3120 },
-  { city: 'BUCARAMANGA', price: 3210 },
-  { city: 'BARRANQUILLA', price: 3320 },
-  { city: 'PEREIRA', price: 2800 },
-  { city: 'CARTAGENA DE INDIAS', price: 3400 },
-];
-
-// Datos ficticios para estacionalidad
-const seasonalityData = [
-  { month: 'Ene', index: 95 },
-  { month: 'Feb', index: 97 },
-  { month: 'Mar', index: 100 },
-  { month: 'Abr', index: 103 },
-  { month: 'May', index: 108 },
-  { month: 'Jun', index: 105 },
-  { month: 'Jul', index: 102 },
-  { month: 'Ago', index: 98 },
-  { month: 'Sep', index: 97 },
-  { month: 'Oct', index: 94 },
-  { month: 'Nov', index: 95 },
-  { month: 'Dic', index: 98 },
-];
+import { fetchPriceData, fetchProducts, fetchCities, fetchProductDetail } from '../utils/api';
 
 const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [currentPrice, setCurrentPrice] = useState(null);
   const [priceData, setPriceData] = useState([]);
+  const [historicalData, setHistoricalData] = useState([]);
+  const [cityPriceData, setCityPriceData] = useState([]);
+  const [seasonalityData, setSeasonalityData] = useState([]);
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
@@ -71,6 +37,12 @@ const ProductDetail = () => {
           if (priceInfo.length > 0) {
             setCurrentPrice(priceInfo[priceInfo.length - 1].price);
           }
+          
+          // Cargar datos detallados del producto
+          const detailData = await fetchProductDetail(foundProduct.id);
+          setHistoricalData(detailData.historicalData);
+          setCityPriceData(detailData.cityPriceData);
+          setSeasonalityData(detailData.seasonalityData);
           
           // Cargar lista de ciudades
           const citiesData = await fetchCities();
@@ -472,10 +444,10 @@ const ProductDetail = () => {
                 <div className="bg-white overflow-hidden shadow-card rounded-xl">
                   <div className="px-4 py-5 sm:p-6">
                     <dt className="text-sm font-medium text-gray-500 truncate">
-                      Precio promedio (2025)
+                      Precio promedio ({historicalData.length > 0 ? historicalData[historicalData.length - 1].year : 'N/A'})
                     </dt>
                     <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      $3,050
+                      ${historicalData.length > 0 ? historicalData[historicalData.length - 1].price.toLocaleString() : 'N/A'}
                     </dd>
                   </div>
                 </div>
@@ -495,7 +467,10 @@ const ProductDetail = () => {
                       Mes más económico
                     </dt>
                     <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      Octubre
+                      {seasonalityData.reduce((lowest, month) => 
+                        month.index < lowest.index ? month : lowest, 
+                        { month: 'N/A', index: Infinity }
+                      ).month}
                     </dd>
                   </div>
                 </div>
@@ -775,7 +750,12 @@ const ProductDetail = () => {
                         </div>
                         <div className="ml-3">
                           <p className="text-sm text-green-800">
-                            Octubre - Diciembre
+                            {(() => {
+                              // Encontrar los meses con índice más bajo (más baratos)
+                              const sortedMonths = [...seasonalityData].sort((a, b) => a.index - b.index);
+                              const bestMonths = sortedMonths.slice(0, 3).map(m => m.month);
+                              return bestMonths.join(' - ');
+                            })()}
                           </p>
                           <p className="mt-2 text-xs text-green-700">
                             Los precios tienden a ser más bajos durante estos meses debido a mayor disponibilidad del producto.
@@ -793,7 +773,12 @@ const ProductDetail = () => {
                         </div>
                         <div className="ml-3">
                           <p className="text-sm text-red-800">
-                            Mayo - Junio
+                            {(() => {
+                              // Encontrar los meses con índice más alto (más caros)
+                              const sortedMonths = [...seasonalityData].sort((a, b) => b.index - a.index);
+                              const worstMonths = sortedMonths.slice(0, 2).map(m => m.month);
+                              return worstMonths.join(' - ');
+                            })()}
                           </p>
                           <p className="mt-2 text-xs text-red-700">
                             Los precios suelen ser más altos en esta época por menor oferta y mayor demanda.

@@ -18,3 +18,9 @@ statsmodels
 zeep
 requests
 
+
+# --- Others ---
+fastapi
+uvicorn
+python-multipart==0.0.6
+pydantic==2.3.0
