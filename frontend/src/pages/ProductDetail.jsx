@@ -90,12 +90,9 @@ const ProductDetail = () => {
   // Si está cargando o no se encuentra el producto
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="flex justify-center items-center min-h-screen bg-gray-50 pt-16">
         <div className="text-center">
-          <svg className="animate-spin h-10 w-10 mx-auto text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mx-auto"></div>
           <p className="mt-3 text-lg text-gray-700">Cargando información del producto...</p>
         </div>
       </div>
@@ -104,8 +101,8 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-md rounded-lg p-6 text-center">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 pt-20">
+        <div className="bg-white shadow-card rounded-xl p-8 text-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -113,7 +110,7 @@ const ProductDetail = () => {
           <p className="text-gray-600 mt-2">Lo sentimos, el producto que estás buscando no existe o ha sido removido.</p>
           <Link 
             to="/" 
-            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="mt-6 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
           >
             Volver al Dashboard
           </Link>
@@ -167,20 +164,20 @@ const ProductDetail = () => {
   const bestCity = determineBestCity();
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-12">
+    <div className="bg-gray-50 min-h-screen pb-12 pt-16">
       {/* Encabezado */}
-      <div className="bg-white shadow">
+      <div className="bg-white shadow-soft">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
               <div className="flex items-center">
-                <Link to="/" className="text-indigo-600 hover:text-indigo-700 mr-2">
+                <Link to="/" className="text-blue-600 hover:text-blue-700 transition-colors mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                   </svg>
                 </Link>
                 <h1 className="text-2xl font-bold text-gray-900">{product.name}</h1>
-                <span className={`ml-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                <span className={`ml-3 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
                   trend.trend === 'Al alza' 
                     ? 'bg-red-100 text-red-800' 
                     : trend.trend === 'A la baja' 
@@ -211,9 +208,9 @@ const ProductDetail = () => {
               onClick={() => setActiveTab('overview')}
               className={`${
                 activeTab === 'overview'
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors`}
             >
               Resumen
             </button>
@@ -221,9 +218,9 @@ const ProductDetail = () => {
               onClick={() => setActiveTab('historical')}
               className={`${
                 activeTab === 'historical'
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors`}
             >
               Histórico
             </button>
@@ -231,9 +228,9 @@ const ProductDetail = () => {
               onClick={() => setActiveTab('comparison')}
               className={`${
                 activeTab === 'comparison'
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors`}
             >
               Comparativa
             </button>
@@ -241,9 +238,9 @@ const ProductDetail = () => {
               onClick={() => setActiveTab('seasonality')}
               className={`${
                 activeTab === 'seasonality'
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
+              } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors`}
             >
               Estacionalidad
             </button>
@@ -258,10 +255,10 @@ const ProductDetail = () => {
               {/* Estadísticas rápidas */}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-8">
                 {/* Precio actual */}
-                <div className="bg-white overflow-hidden shadow rounded-lg">
+                <div className="bg-white overflow-hidden shadow-card rounded-xl transition-all duration-300 hover:shadow-lg">
                   <div className="px-4 py-5 sm:p-6">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                      <div className="flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -283,10 +280,10 @@ const ProductDetail = () => {
                 </div>
 
                 {/* Tendencia */}
-                <div className="bg-white overflow-hidden shadow rounded-lg">
+                <div className="bg-white overflow-hidden shadow-card rounded-xl transition-all duration-300 hover:shadow-lg">
                   <div className="px-4 py-5 sm:p-6">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 bg-purple-500 rounded-md p-3">
+                      <div className="flex-shrink-0 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                         </svg>
@@ -308,10 +305,10 @@ const ProductDetail = () => {
                 </div>
 
                 {/* Mejor precio */}
-                <div className="bg-white overflow-hidden shadow rounded-lg">
+                <div className="bg-white overflow-hidden shadow-card rounded-xl transition-all duration-300 hover:shadow-lg">
                   <div className="px-4 py-5 sm:p-6">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 bg-green-500 rounded-md p-3">
+                      <div className="flex-shrink-0 bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -335,7 +332,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Gráfico reciente */}
-              <div className="bg-white shadow rounded-lg overflow-hidden mb-8">
+              <div className="bg-white shadow-card rounded-xl overflow-hidden mb-8">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg font-medium leading-6 text-gray-900">Evolución de precio reciente</h3>
                 </div>
@@ -348,8 +345,8 @@ const ProductDetail = () => {
                       >
                         <defs>
                           <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                            <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                            <stop offset="5%" stopColor="#4870f6" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="#4870f6" stopOpacity={0}/>
                           </linearGradient>
                         </defs>
                         <XAxis dataKey="month" />
@@ -361,7 +358,7 @@ const ProductDetail = () => {
                         <Area 
                           type="monotone" 
                           dataKey="price" 
-                          stroke="#8884d8" 
+                          stroke="#4870f6" 
                           fillOpacity={1} 
                           fill="url(#colorPrice)" 
                           name="Precio"
@@ -373,7 +370,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Recomendación */}
-              <div className="bg-white shadow rounded-lg overflow-hidden">
+              <div className="bg-white shadow-card rounded-xl overflow-hidden">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg font-medium leading-6 text-gray-900">Recomendación</h3>
                 </div>
@@ -422,7 +419,7 @@ const ProductDetail = () => {
                       <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
                         <button
                           type="button"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                         >
                           Agregar a lista
                         </button>
@@ -444,24 +441,24 @@ const ProductDetail = () => {
                   <div className="flex rounded-md shadow-sm">
                     <button
                       type="button"
-                      className={`relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium 
-                        ${analysisPeriod === 'month' ? 'text-indigo-700 bg-indigo-50 z-10' : 'text-gray-700 hover:bg-gray-50'}`}
+                      className={`relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium transition-colors
+                        ${analysisPeriod === 'month' ? 'text-blue-700 bg-blue-50 z-10' : 'text-gray-700 hover:bg-gray-50'}`}
                       onClick={() => setAnalysisPeriod('month')}
                     >
                       Mensual
                     </button>
                     <button
                       type="button"
-                      className={`relative -ml-px inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium 
-                        ${analysisPeriod === 'quarter' ? 'text-indigo-700 bg-indigo-50 z-10' : 'text-gray-700 hover:bg-gray-50'}`}
+                      className={`relative -ml-px inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium transition-colors
+                        ${analysisPeriod === 'quarter' ? 'text-blue-700 bg-blue-50 z-10' : 'text-gray-700 hover:bg-gray-50'}`}
                       onClick={() => setAnalysisPeriod('quarter')}
                     >
                       Trimestral
                     </button>
                     <button
                       type="button"
-                      className={`relative -ml-px inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium 
-                        ${analysisPeriod === 'year' ? 'text-indigo-700 bg-indigo-50 z-10' : 'text-gray-700 hover:bg-gray-50'}`}
+                      className={`relative -ml-px inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium transition-colors
+                        ${analysisPeriod === 'year' ? 'text-blue-700 bg-blue-50 z-10' : 'text-gray-700 hover:bg-gray-50'}`}
                       onClick={() => setAnalysisPeriod('year')}
                     >
                       Anual
@@ -472,7 +469,7 @@ const ProductDetail = () => {
 
               {/* Estadísticas anuales */}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 mb-8">
-                <div className="bg-white overflow-hidden shadow rounded-lg">
+                <div className="bg-white overflow-hidden shadow-card rounded-xl">
                   <div className="px-4 py-5 sm:p-6">
                     <dt className="text-sm font-medium text-gray-500 truncate">
                       Precio promedio (2025)
@@ -482,7 +479,7 @@ const ProductDetail = () => {
                     </dd>
                   </div>
                 </div>
-                <div className="bg-white overflow-hidden shadow rounded-lg">
+                <div className="bg-white overflow-hidden shadow-card rounded-xl">
                   <div className="px-4 py-5 sm:p-6">
                     <dt className="text-sm font-medium text-gray-500 truncate">
                       Variación anual
@@ -492,7 +489,7 @@ const ProductDetail = () => {
                     </dd>
                   </div>
                 </div>
-                <div className="bg-white overflow-hidden shadow rounded-lg">
+                <div className="bg-white overflow-hidden shadow-card rounded-xl">
                   <div className="px-4 py-5 sm:p-6">
                     <dt className="text-sm font-medium text-gray-500 truncate">
                       Mes más económico
@@ -505,7 +502,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Gráfico histórico */}
-              <div className="bg-white shadow rounded-lg overflow-hidden">
+              <div className="bg-white shadow-card rounded-xl overflow-hidden">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg font-medium leading-6 text-gray-900">Evolución de precios históricos</h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
@@ -529,7 +526,7 @@ const ProductDetail = () => {
                         <Line
                           type="monotone"
                           dataKey="price"
-                          stroke="#8884d8"
+                          stroke="#4870f6"
                           activeDot={{ r: 8 }}
                           name="Precio promedio"
                         />
@@ -538,12 +535,12 @@ const ProductDetail = () => {
                   </div>
                 </div>
               </div>
-
+              
               {/* Tabla de datos históricos */}
               <div className="mt-8 flex flex-col">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <div className="shadow-soft overflow-hidden border border-gray-200 sm:rounded-xl">
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
@@ -621,7 +618,7 @@ const ProductDetail = () => {
           {/* Pestaña: Comparativa */}
           {activeTab === 'comparison' && (
             <div>
-              <div className="bg-white shadow rounded-lg overflow-hidden mb-8">
+              <div className="bg-white shadow-card rounded-xl overflow-hidden mb-8">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg font-medium leading-6 text-gray-900">Precios por ciudad</h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
@@ -641,7 +638,7 @@ const ProductDetail = () => {
                         <YAxis dataKey="city" type="category" width={120} />
                         <Tooltip formatter={(value) => [`${value.toLocaleString()}`, 'Precio']} />
                         <Legend />
-                        <Bar dataKey="price" name="Precio" fill="#8884d8" />
+                        <Bar dataKey="price" name="Precio" fill="#4870f6" />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
@@ -649,7 +646,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Tabla de comparación */}
-              <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div className="bg-white shadow-card overflow-hidden sm:rounded-xl">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg leading-6 font-medium text-gray-900">Detalle de precios por ciudad</h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
@@ -722,7 +719,7 @@ const ProductDetail = () => {
           {/* Pestaña: Estacionalidad */}
           {activeTab === 'seasonality' && (
             <div>
-              <div className="bg-white shadow rounded-lg overflow-hidden mb-8">
+              <div className="bg-white shadow-card rounded-xl overflow-hidden mb-8">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg font-medium leading-6 text-gray-900">Índice de estacionalidad</h3>
                   <p className="mt-1 max-w-2xl text-sm text-gray-500">
@@ -762,7 +759,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Mejor momento para comprar */}
-              <div className="bg-white shadow rounded-lg overflow-hidden mb-8">
+              <div className="bg-white shadow-card rounded-xl overflow-hidden mb-8">
                 <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
                   <h3 className="text-lg font-medium leading-6 text-gray-900">Análisis de estacionalidad</h3>
                 </div>
