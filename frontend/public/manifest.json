@@ -1,6 +1,6 @@
 {
-    "short_name": "FOODECONOMY",
-    "name": "FOODECONOMY - Tracker de precios",
+    "short_name": "PriceTrack",
+    "name": "PriceTrack - Análisis de precios",
     "icons": [
       {
         "src": "favicon.ico",
@@ -10,6 +10,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#000000",
+    "theme_color": "#1e3a8a",
     "background_color": "#ffffff"
   }
