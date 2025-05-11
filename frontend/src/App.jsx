@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard';
 import ProductDetail from './pages/ProductDetail';
 import Products from './pages/Products';
 import Recommendations from './pages/Recommendations';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './components/LandingPage';
 
 function App() {
   return (
